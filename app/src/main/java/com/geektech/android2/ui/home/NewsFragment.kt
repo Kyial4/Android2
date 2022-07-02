@@ -10,7 +10,6 @@ import androidx.annotation.RequiresApi
 import androidx.navigation.fragment.findNavController
 import com.geektech.android2.databinding.FragmentNewsBinding
 import com.geektech.android2.models.News
-import java.text.DateFormat
 
 class NewsFragment : Fragment() {
 
@@ -46,9 +45,9 @@ class NewsFragment : Fragment() {
         val text = binding.editText.text.toString().trim()
 
         if (news == null) {
-            news = News(text, System.currentTimeMillis())
+           news = News(0,text, System.currentTimeMillis())
         } else {
-            news?.tittle = text
+           news?.tittle = text
         }
 
             val bundle = Bundle()
@@ -60,3 +59,4 @@ class NewsFragment : Fragment() {
 
     }
 }
+

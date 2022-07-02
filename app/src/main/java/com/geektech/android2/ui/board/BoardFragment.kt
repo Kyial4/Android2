@@ -25,13 +25,14 @@ class BoardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = BoardAdapter {
-            close()
+            findNavController().navigateUp()
         }
-        binding.viewPager.adapter = adapter
-        val dotsIndicator = binding.dotsIndicator
-        val viewPager = binding.viewPager
-        viewPager.adapter = (adapter)
-        dotsIndicator.setViewPager2(viewPager)
+       /* binding.viewPager.adapter=adapter
+        val dots  =binding.wormDotsIndicator
+        val viewpager2=binding.viewPager
+        dots.setViewPager2(viewpager2)*/
+        binding.viewPager.adapter=adapter
+        binding.wormDotsIndicator.setViewPager2(binding.viewPager)
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
             object : OnBackPressedCallback(true) {

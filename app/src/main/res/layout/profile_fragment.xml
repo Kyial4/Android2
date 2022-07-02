@@ -28,11 +28,10 @@
         app:layout_constraintTop_toBottomOf="@id/imageView"
         />
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editText12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Click Image"
         android:backgroundTint="@color/purple_200"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +46,7 @@
         android:backgroundTint="@color/purple_200"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editText"
+        app:layout_constraintTop_toBottomOf="@id/editText12"
 
         />
 

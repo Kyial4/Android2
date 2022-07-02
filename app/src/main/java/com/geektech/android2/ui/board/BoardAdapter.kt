@@ -55,15 +55,7 @@ class BoardAdapter(private val onClickStart: () -> Unit) :
             binding.btnStart.setOnClickListener {
                 onClickStart()
             }
-
-
-
         }
-
-
     }
-
-
-
 }
 
