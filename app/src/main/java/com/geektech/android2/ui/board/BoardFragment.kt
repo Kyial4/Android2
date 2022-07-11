@@ -9,7 +9,9 @@ import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.geektech.android2.Prefs
+import com.geektech.android2.R
 import com.geektech.android2.databinding.FragmentBoardBinding
+import com.geektech.android2.models.Board
 
 class BoardFragment : Fragment() {
     private lateinit var binding: FragmentBoardBinding
@@ -27,11 +29,14 @@ class BoardFragment : Fragment() {
         val adapter = BoardAdapter {
             findNavController().navigateUp()
         }
-       /* binding.viewPager.adapter=adapter
-        val dots  =binding.wormDotsIndicator
-        val viewpager2=binding.viewPager
-        dots.setViewPager2(viewpager2)*/
-        binding.viewPager.adapter=adapter
+        /* binding.viewPager.adapter=adapter
+         val dots  =binding.wormDotsIndicator
+         val viewpager2=binding.viewPager
+         dots.setViewPager2(viewpager2)*/
+        adapter.addItem(Board(R.raw.lottie1, "Hello", "Description"))
+        adapter.addItem(Board(R.raw.lottie2, "Привет", "Description"))
+        adapter.addItem(Board(R.raw.lottie3, "Салам", "Description"))
+        binding.viewPager.adapter = adapter
         binding.wormDotsIndicator.setViewPager2(binding.viewPager)
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
@@ -65,6 +70,9 @@ class BoardFragment : Fragment() {
         findNavController().navigateUp()
 
     }
+    //1. Закончить авторизацию по номеру телефона
+//2. Обратный отсчет
+//Bonus. По завершении отсчета показать окно для ввода номера
 
 }
 

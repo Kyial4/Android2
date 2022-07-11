@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#8FA871</color>
     <color name="DKgray">#90DC40</color>
+    <color name="profile">#D4F1F7</color>
+    <color name="button">#AE9B9D</color>
+
 </resources>

@@ -12,8 +12,10 @@ import com.geektech.android2.ui.home.NewsAdapter.ViewHolder
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NewsAdapter(private val onClick:(position: Int)->Unit) : RecyclerView.Adapter<ViewHolder>() {
-    private val list = arrayListOf<News>()
+class NewsAdapter(private val onClick: (position: Int) -> Unit) :
+    RecyclerView.Adapter<ViewHolder>() {
+    private var list = arrayListOf<News>()
+    var onItemLongClick: ((Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -31,16 +33,16 @@ class NewsAdapter(private val onClick:(position: Int)->Unit) : RecyclerView.Adap
             onClick(position)
         }
 
-            if(position %2==0){
-                holder.itemView.setBackgroundColor(Color.DKGRAY)
-            }else{
-                holder.itemView.setBackgroundColor(Color.GRAY)
-            }
+        if (position % 2 == 0) {
+            holder.itemView.setBackgroundColor(Color.DKGRAY)
+        } else {
+            holder.itemView.setBackgroundColor(Color.GRAY)
+        }
     }
 
     override fun getItemCount(): Int = list.size
     fun addItem(news: News) {
-        list.add(0,news)
+        list.add(0, news)
         notifyItemInserted(list.indexOf(news))
 
     }
@@ -49,11 +51,33 @@ class NewsAdapter(private val onClick:(position: Int)->Unit) : RecyclerView.Adap
         return list[pos]
 
     }
-    fun replaceItem(news:News, poss:Int){
-        list.set (poss,news)
+
+    fun replaceItem(news: News, poss: Int) {
+        list.set(poss, news)
         notifyItemChanged(poss)
     }
 
+    fun addItems(list: List<News?>?) {
+        this.list.addAll(listOf())
+        notifyDataSetChanged()
+
+    }
+
+    fun addList(list: List<News>) {
+        this.list = list as ArrayList<News>
+        Collections.reverse(this.list)
+        notifyDataSetChanged()
+    }
+
+    fun removeItem(position: Int) {
+        list.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
+    fun updateItem(news: News?, position: Int) {
+        list[position] = news!!
+        notifyItemChanged(position)
+    }
 
 
     inner class ViewHolder(private var binding: ItemNewsBinding) :
@@ -70,5 +94,11 @@ class NewsAdapter(private val onClick:(position: Int)->Unit) : RecyclerView.Adap
             calendar.timeInMillis = milliSeconds;
             return formater.format(calendar.time);
         }
+
+
+        //1. Закончить авторизацию по номеру телефона
+        // 2. Обратный отсчет
+        // Bonus. По завершении отсчета показать окно для ввода номера
+
     }
 }

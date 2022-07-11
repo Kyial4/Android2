@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.navigation.fragment.findNavController
+import com.geektech.android2.App
 import com.geektech.android2.databinding.FragmentNewsBinding
 import com.geektech.android2.models.News
 
@@ -43,7 +44,8 @@ class NewsFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun save() {
         val text = binding.editText.text.toString().trim()
-
+        var news=News(0,text, System.currentTimeMillis())
+        App.dataBase.newsDao().insert(news)
         if (news == null) {
            news = News(0,text, System.currentTimeMillis())
         } else {

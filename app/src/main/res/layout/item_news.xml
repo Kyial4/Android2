@@ -5,18 +5,19 @@
     android:layout_height="wrap_content">
     <TextView
         android:id="@+id/textTittle"
-
+        android:padding="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
         android:id="@+id/textDate"
-
+        android:padding="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
         android:id="@+id/textTime"
-
+        android:padding="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>
